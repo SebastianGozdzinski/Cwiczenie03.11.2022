@@ -1,0 +1,175 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="imieinazwisko">Imie i Nazwisko</label><br>
+        <input type="text" name="imieinazwisko" class="imieinazwisko" required><br>
+        <p class="imieinazwiskop"></p>
+
+        <label for="wiek">Wiek</label><br>
+        <input type="number" name="wiek" class="wiek" min="1" max="125"><br>
+        <p class="wiekp"></p>
+        
+        <label for="email">Email</label><br>
+        <input type="email" name="email" class="email" required><br>
+        <p class="emailp"></p>
+        
+        <label for="pesel">Pesel</label><br>
+        <input type="number" name="pesel" class="pesel" required><br>
+        <p class="peselp"></p>
+        
+        <label for="plec">Plec</label><br>
+        <input type="text" name="plec" class="plec" required><br>
+        <p class="plecp"></p>
+        
+        <label for="telefon">Telefon</label><br>
+        <input type="tel" name="telefon" class="telefon" required min="450000000" max="889999999" minlength="9" maxlength="9"><br>
+        <p class="telefonp"></p>
+        
+        <label for="klasa">Klasa</label><br>
+        <input type="text" name="klasa" class="klasa"><br>
+        <p class="klasap"></p>
+        
+        <label for="tytul">Tytuł</label><br>
+        <input type="text" name="tytul" class="tytul" required><br>
+        <p class="tytulp"></p>
+        
+        <label for="wydawca">Wydawca</label><br>
+        <input type="text" name="wydawca" class="wydawca" required><br>
+        <p class="wydawcap"></p>
+        
+        <label for="ISBN">ISBN</label><br>
+        <input type="number" name="ISBN" class="ISBN" required><br>
+        <p class="ISBNp"></p>
+        
+        <label for="numer ewidencyjny">Numer Ewidencyjny</label><br>
+        <input type="text" name="numer ewidencyjny" class="ne" required><br>
+        <p class="nep"></p>
+        
+        <label for="uwagi">Uwagi</label><br>
+        <input type="text" name="uwagi" class="uwagi"><br>
+        <p class="uwagip"></p>
+        
+        <input type="button" value="Wyślij" class="button"><br>
+
+    <script>
+        let imieinazwisko = document.querySelector('.imieinazwisko')
+        let wiek = document.querySelector(".wiek")
+        let email = document.querySelector('.email')
+        let pesel = document.querySelector('.pesel')
+        let plec = document.querySelector('.plec')
+        let telefon = document.querySelector('.telefon')
+        let klasa = document.querySelector('.klasa')
+        let tytul = document.querySelector('.tytul')
+        let wydawca = document.querySelector('.wydawca')
+        let ISBN = document.querySelector('.ISBN')
+        let ne = document.querySelector('.ne')
+        let uwagi = document.querySelector('.uwagi')
+        let button = document.querySelector('.button')
+
+        let imieinazwiskop = document.querySelector('.imieinazwiskop')
+        let wiekp = document.querySelector('.wiekp')
+        let emailp = document.querySelector('.emailp')
+        let peselp = document.querySelector('.peselp')
+        let plecp = document.querySelector('.plecp')
+        let telefonp = document.querySelector('.telefonp')
+        let klasap = document.querySelector('.klasap')
+        let tytulp = document.querySelector('.tytulp')
+        let wydawcap = document.querySelector('.wydawcap')
+        let ISBNp = document.querySelector('.ISBNp')
+        let nep = document.querySelector('.nep')
+        let uwagip = document.querySelector('.uwagip')
+
+        button.addEventListener('click', checker)
+
+        function checker()
+        {
+            if(imieinazwisko.value.trim().length == 0)
+            {
+                imieinazwiskop.innerHTML = 'Nie można zostawić pustego pola'
+            }
+
+            if(parseInt(wiek.value) < 1 || parseInt(wiek.value) >= 125)
+            {
+                wiekp.innerHTML = 'Wpisz prawidłowy wiek'
+            }
+
+            if(email.value.trim().length == 0)
+            {
+                emailp.innerHTML = 'Nie można zostawić pustego pola'
+            }
+            else
+            {
+                em = email.value
+                if(!em.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi))
+                {
+                    emailp.innerHTML = 'Wprowadź prawidłowego maila'
+                }
+            }
+
+            if(pesel.value.trim().length == 0)
+            {
+                pesesp.innerHTML = 'Nie można zostawić pustego pola'
+            }
+            else
+            {
+                if(parseInt(pesel.value) <= 1000000000 || parseInt(pesel.value) >= 99999999999)
+                {
+                    peselp.innerHTML = 'Wprowadz prawidlowy pesel'
+                }
+            }
+
+            if(plec.value.trim().length == 0)
+            {
+                plecp.innerHTML = 'Nie można zostawić pustego pola'
+            }
+
+            if(parseInt(telefon.value) <= 450000000 || parseInt(telefon.value) >= 889999999)
+            {
+                telefonp.innerHTML = 'Wpisz prawidłowy polski numer komórkowy'
+            }
+
+            if(klasa.value.trim().length > 0)
+            {
+                if(typeof(kl[0]) != 'number' || typeof(kl[1]) != 'string')
+                {
+                    klasap.innerHTML = 'Podaj prawidłową klasę'
+                }
+            }
+
+            if(tytul.value.trim().length == 0)
+            {
+                tytulp.innerHTML = 'Nie można zostawić pustego pola'
+            }
+
+            if(wydawca.value.trim().length == 0)
+            {
+                wydawcap.innerHTML = 'Nie można zostawić pustego pola'
+            }
+            
+            if(ISBN.value.trim().length == 0)
+            {
+                ISBNp.innerHTML = 'Nie można zostawić pustego pola'
+            }
+            else
+            {
+                if(ISBN.value.length != 13)
+                {
+                    ISBNp.innerHTML = 'Podaj prawidłowy numer ISBN'
+                }
+            }
+
+            if(ne.value.trim().length == 0)
+            {
+                nep.innerHTML = 'Nie można zostawić pustego pola'
+            }
+        }
+
+    </script>
+</body>
+</html>
