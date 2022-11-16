@@ -8,7 +8,7 @@
 <body>
     <form>
         <label for="imieinazwisko">Imie i Nazwisko</label><br>
-        <input type="text" name="imieinazwisko" class="imieinazwisko" required><br>
+        <input type="text" name="imieinazwisko" class="imieinazwisko"><br>
         <p class="imieinazwiskop"></p>
 
         <label for="wiek">Wiek</label><br>
@@ -16,15 +16,15 @@
         <p class="wiekp"></p>
         
         <label for="email">Email</label><br>
-        <input type="email" name="email" class="email" required><br>
+        <input type="email" name="email" class="email"><br>
         <p class="emailp"></p>
         
         <label for="pesel">Pesel</label><br>
-        <input type="number" name="pesel" class="pesel" required><br>
+        <input type="number" name="pesel" class="pesel"><br>
         <p class="peselp"></p>
         
         <label for="plec">Plec</label><br>
-        <input type="text" name="plec" class="plec" required><br>
+        <input type="text" name="plec" class="plec"><br>
         <p class="plecp"></p>
         
         <label for="telefon">Telefon</label><br>
@@ -36,19 +36,19 @@
         <p class="klasap"></p>
         
         <label for="tytul">Tytuł</label><br>
-        <input type="text" name="tytul" class="tytul" required><br>
+        <input type="text" name="tytul" class="tytul"><br>
         <p class="tytulp"></p>
         
         <label for="wydawca">Wydawca</label><br>
-        <input type="text" name="wydawca" class="wydawca" required><br>
+        <input type="text" name="wydawca" class="wydawca"><br>
         <p class="wydawcap"></p>
         
         <label for="ISBN">ISBN</label><br>
-        <input type="number" name="ISBN" class="ISBN" required><br>
+        <input type="number" name="ISBN" class="ISBN"><br>
         <p class="ISBNp"></p>
         
         <label for="numer ewidencyjny">Numer Ewidencyjny</label><br>
-        <input type="text" name="numer ewidencyjny" class="ne" required><br>
+        <input type="text" name="numer ewidencyjny" class="ne"><br>
         <p class="nep"></p>
         
         <label for="uwagi">Uwagi</label><br>
@@ -89,87 +89,163 @@
 
         function checker()
         {
-            if(imieinazwisko.value.trim().length == 0)
+            if(imieinazwisko.value.length == 0)
             {
                 imieinazwiskop.innerHTML = 'Nie można zostawić pustego pola'
+                imieinazwisko.style.border = '5px solid red'
+            }
+            else
+            {
+                if(imieinazwisko.value.length > 6)
+                {
+                    imieinazwiskop.innerHTML = ''
+                    imieinazwisko.style.border = '5px solid green'
+                }
+                else
+                {
+                    imieinazwiskop.innerHTML = 'Wpisz wprawidłowe imie i naziwsko'
+                    imieinazwisko.style.border = '5px solid red'
+                }
             }
 
             if(parseInt(wiek.value) < 1 || parseInt(wiek.value) >= 125)
             {
                 wiekp.innerHTML = 'Wpisz prawidłowy wiek'
+                wiek.style.border = '5px solid red'
+            }
+            else
+            {
+                wiek.style.border = '5px solid green'
+                wiekp.innerHTML = ''
             }
 
             if(email.value.trim().length == 0)
             {
                 emailp.innerHTML = 'Nie można zostawić pustego pola'
+                email.style.border = '5px solid red'
             }
             else
             {
                 em = email.value
-                if(!em.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi))
+                if(em.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi))
                 {
-                    emailp.innerHTML = 'Wprowadź prawidłowego maila'
+                    emailp.innerHTML = ''
+                    email.style.border = '5px solid green' 
                 }
             }
 
-            if(pesel.value.trim().length == 0)
+            if(pesel.value.length == 0)
             {
-                pesesp.innerHTML = 'Nie można zostawić pustego pola'
+                peselp.innerHTML = "Wpisz pesel"
+                pesel.style.border = '5px solid red'
             }
             else
             {
-                if(parseInt(pesel.value) <= 1000000000 || parseInt(pesel.value) >= 99999999999)
+                if(pesel.value.length == 11)
                 {
-                    peselp.innerHTML = 'Wprowadz prawidlowy pesel'
+                    pesel.style.border = '5px solid green'
+                    peselp.innerHTML = ""
+                }
+                else
+                {
+                    pesel.style.border = '5px solid red'
+                    peselp.innerHTML = "Wpisz prawidłowy pesel"
                 }
             }
 
-            if(plec.value.trim().length == 0)
+            if(plec.value.length == 0)
             {
                 plecp.innerHTML = 'Nie można zostawić pustego pola'
+                plec.style.border = '5px solid red'
+            }
+            else
+            {
+                plec.style.border = '5px solid green'
+                plecp.innerHTML = ""
             }
 
-            if(parseInt(telefon.value) <= 450000000 || parseInt(telefon.value) >= 889999999)
+            if(telefon.value.length == 0)
             {
                 telefonp.innerHTML = 'Wpisz prawidłowy polski numer komórkowy'
+                telefon.style.border = '5px solid red'
+            }
+            else
+            {
+                if(parseInt(telefon.value) <= 450000000 || parseInt(telefon.value) >= 889999999)
+                {
+                    telefonp.innerHTML = 'Wpisz prawidłowy polski numer komórkowy'
+                    telefon.style.border = '5px solid red'
+                }
+                else
+                {
+                    telefonp.innerHTML = ''
+                    telefon.style.border = '5px solid green'
+                }
             }
 
-            if(klasa.value.trim().length > 0)
+            if(klasa.value.length == 0)
             {
-                if(typeof(kl[0]) != 'number' || typeof(kl[1]) != 'string')
-                {
-                    klasap.innerHTML = 'Podaj prawidłową klasę'
-                }
+                klasa.style.border = '5px solid green'
+                klasap.innerHTML = ''
+            }
+            else
+            {
+                klasap.innerHTML = ''
+                klasa.style.border = '5px solid green'
             }
 
             if(tytul.value.trim().length == 0)
             {
                 tytulp.innerHTML = 'Nie można zostawić pustego pola'
+                tytul.style.border = '5px solid red'
+            }
+            else
+            {
+                tytulp.innerHTML = ''
+                tytul.style.border = '5px solid green'
             }
 
             if(wydawca.value.trim().length == 0)
             {
                 wydawcap.innerHTML = 'Nie można zostawić pustego pola'
-            }
-            
-            if(ISBN.value.trim().length == 0)
-            {
-                ISBNp.innerHTML = 'Nie można zostawić pustego pola'
+                wydawca.style.border = '5px solid red'
             }
             else
             {
-                if(ISBN.value.length != 13)
+                wydawcap.innerHTML = ''
+                wydawca.style.border = '5px solid green'
+            }
+            
+            if(ISBN.value.length == 0)
+            {
+                ISBNp.innerHTML = "Wpisz ISBN"
+                ISBN.style.border = '5px solid red'
+            }
+            else
+            {
+                if(ISBN.value.length == 13)
                 {
-                    ISBNp.innerHTML = 'Podaj prawidłowy numer ISBN'
+                    ISBN.style.border = '5px solid green'
+                    ISBNp.innerHTML = ""
+                }
+                else
+                {
+                    ISBN.style.border = '5px solid red'
+                    ISBNp.innerHTML = "Wpisz prawidłowy ISBN"
                 }
             }
 
             if(ne.value.trim().length == 0)
             {
                 nep.innerHTML = 'Nie można zostawić pustego pola'
+                ne.style.border = '5px solid red'
+            }
+            else
+            {
+                nep.innerHTML = ''
+                ne.style.border = '5px solid green'
             }
         }
-
     </script>
 </body>
 </html>
